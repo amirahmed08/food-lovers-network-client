@@ -1,12 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router'
 import { MdOutlineLogin } from "react-icons/md";
+import { use } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
+import { BiLogOut } from "react-icons/bi";
 
-const Navbar = () => {
+
+  const Navbar = () => {
+    
+    const {user, logOut} = use(AuthContext)
 
   const [showItems, setShowItems] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [isHovering, setIsHovering] = useState(false)
+
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        // Sign-out successful.
+        alert('Logout successful')
+      })
+      .catch((error) => {
+        // An error happened.
+        alert('Error signing out: ' + error.message);
+       })
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,8 +113,21 @@ const Navbar = () => {
                 ? 'px-2 md:px-4 py-2 text-lg md:text-xl opacity-100 scale-100 ' 
                 : 'opacity-0 scale-75 pointer-events-none px-0 py-0'}
             `}>
-              <MdOutlineLogin />
-              <span className="hidden md:inline">{visible && 'Login'}</span>
+              {user? 
+              (
+                <button onClick={handleLogOut} className="flex items-center gap-2 bg-[#FFC107] rounded-xl transition-all duration-300 hover:scale-90 px-2 md:px-4 py-2 text-lg md:text-xl">
+                  <BiLogOut />
+                  <span className="hidden md:inline">{visible && 'Logout'}</span>
+                </button>
+              )
+                :
+              (
+              <>
+               <MdOutlineLogin />
+               <span className="hidden md:inline">{visible && 'Login'}</span>
+              </>
+              )
+              }
             </NavLink>
 
           </div>
