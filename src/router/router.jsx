@@ -8,6 +8,7 @@ import Authentication from "../Components/Authentication/Authentication";
 import Login from "../Pages/Login";
 import Register from "../Pages/register";
 import Error from "../Pages/Error";
+import CardDetailPage from "../Pages/CardDetailPage";
 
 const router = createBrowserRouter(
     [
@@ -18,39 +19,46 @@ const router = createBrowserRouter(
                 {
                     index: true,
                     path: "/",
+                    loader: () => fetch(`http://localhost:3000/latest-foods`),
                     Component: Home
                 },
                 {
                     path: "/all-review",
-                    Component:AllReview,
+                    loader: () => fetch(`http://localhost:3000/foods`),
+                    Component: AllReview,
                 },
                 {
                     path: "/my-reviews",
-                    Component:MyReviews,
+                    Component: MyReviews,
                 },
                 {
                     path: "/add-reviews",
-                    Component:AddReviews,
+                    Component: AddReviews,
+                },
+                {
+                    path: "/foods/:id",
+                    loader: ({ params }) => fetch(`http://localhost:3000/foods/${params.id}`),
+                    Component: CardDetailPage,
                 }
             ]
         },
 
         {
             path: "/auth",
-            Component:Authentication,
+            Component: Authentication,
             children: [
                 {
                     path: "/auth/login",
-                    Component:Login,
+                    Component: Login,
                 },
                 {
                     path: "/auth/register",
-                    Component:Register,
+                    Component: Register,
                 }
             ]
         },
         {
-            path:"/*",
+            path: "/*",
             Component: Error,
         }
     ]

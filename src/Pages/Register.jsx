@@ -20,6 +20,26 @@ const Register = () => {
     createUser(email, password)
       .then(result => {
         const user = result.user
+
+        const newUser = {
+        name: name,
+        email: email,
+        photoURL: photoURL
+      }
+
+      //create user in the database
+      fetch('http://localhost:3000/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log('data after user save', data)
+      })
+
         setUser(user)
         alert('You registered successfully!!')
       })
@@ -36,6 +56,25 @@ const Register = () => {
     signInWithGoogle()
     .then(result => {
       const user = result.user
+
+      const newUser = {
+        name: result.user.displayName,
+        email: result.user.email,
+        photoURL: result.user.photoURL
+      }
+
+      //create user in the database
+      fetch('http://localhost:3000/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log('data after user save', data)
+      })
       setUser(user)
       alert('You logged in successfully!!')
     })
@@ -67,7 +106,7 @@ const Register = () => {
           {/* <!-- From Uiverse.io by gharsh11032000 -->  */}
 
           <NavLink to="/auth/login">
-          <button class="animated-button">
+          <button className="animated-button">
             <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
