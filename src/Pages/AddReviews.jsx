@@ -3,7 +3,29 @@ import React, { useState } from "react";
 const AddReview = () => {
   const [rating, setRating] = useState(0);
 
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const data = {
+      food_name: form.food_name.value,
+      food_category: form.food_category.value,
+      restaurant_name: form.restaurant_name.value,
+      restaurant_website: form.restaurant_website.value,
+      location: form.location.value,
+      price_min: form.price_min.value,
+      price_max: form.price_max.value,
+      currency: form.currency.value,
+      food_description: form.food_description.value,
+      review: form.review.value,
+      image_url: form.image_url.value,
+      rating,
+      created_at: new Date().toISOString(),
+    };
+
+    console.log(data);
+  };
 
   return (
     <div className="min-h-screen bg-[#fff9e2] py-25 px-4">
