@@ -5,94 +5,91 @@ const AddReview = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const form = e.target;
 
     const data = {
       food_name: form.food_name.value,
-      food_category: form.food_category.value,
-      restaurant_name: form.restaurant_name.value,
-      restaurant_website: form.restaurant_website.value,
-      location: form.location.value,
-      price_min: form.price_min.value,
-      price_max: form.price_max.value,
-      currency: form.currency.value,
-      food_description: form.food_description.value,
-      review: form.review.value,
       image_url: form.image_url.value,
+      restaurant_name: form.restaurant_name.value,
+      location: form.location.value,
+      review: form.review.value,
       rating,
       created_at: new Date().toISOString(),
     };
 
-    console.log(data);
+    fetch("http://localhost:3000/reviews", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then(res => res.json()) 
+      .then(result => { console.log('Saved to DB:', result);
+         if (result.insertedId) 
+          { 
+            alert('Review added successfully!'); 
+          }
+        })
+         .catch(error =>
+           { 
+          console.error('Error:', error);
+          });
   };
 
   return (
-    <div className="min-h-screen bg-[#fff9e2] py-25 px-4">
-      <div className="max-w-4xl mx-auto bg-white p-6 rounded-2xl shadow-lg">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-orange-100 flex items-center justify-center px-4 pb-10 pt-25">
+      <div className="w-full max-w-2xl bg-white rounded-3xl shadow-xl p-8">
         
-        <h2 className="text-2xl font-bold mb-6 text-center">
-          Add Your Review 🍽️
+        <h2 className="text-3xl font-bold text-center mb-6">
+          🍽️ Share Your Food Experience
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-5">
 
-          {/* Food Info */}
+          {/* Food Name */}
+
+          
+            <input
+            name="food_name"
+            placeholder="Food Name"
+            required
+            className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-yellow-400 transition"
+          />
+          
+
+          {/* Image URL */}
+          <input
+            name="image_url"
+            placeholder="Food Image URL"
+           className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-yellow-400 transition"
+          />
+
+          {/* Restaurant */}
+          <input
+            name="restaurant_name"
+            placeholder="Restaurant Name"
+            required
+            className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-yellow-400 transition"
+          />
+
+          {/* Location */}
+          <input
+            name="location"
+            placeholder="Location"
+            required
+            className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-yellow-400 transition"
+          />
+
+          {/* ⭐ Rating */}
           <div>
-            <h3 className="font-semibold mb-2">Food Info</h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              <input name="food_name" placeholder="Food Name" className="input input-bordered w-full" required />
-              
-              <select name="food_category" className="input input-bordered w-full">
-                <option>Local</option>
-                <option>Fast Food</option>
-                <option>Dessert</option>
-              </select>
-
-              <input name="image_url" placeholder="Food Image URL" className="input input-bordered w-full md:col-span-2" />
-            </div>
-          </div>
-
-          {/* Restaurant Info */}
-          <div>
-            <h3 className="font-semibold mb-2">Restaurant Info</h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              <input name="restaurant_name" placeholder="Restaurant Name" className="input input-bordered w-full" />
-              <input name="location" placeholder="Location" className="input input-bordered w-full" />
-              <input name="restaurant_website" placeholder="Website (optional)" className="input input-bordered w-full md:col-span-2" />
-            </div>
-          </div>
-
-          {/* Price */}
-          <div>
-            <h3 className="font-semibold mb-2">Price</h3>
-            <div className="grid md:grid-cols-3 gap-4">
-              <input type="number" name="price_min" placeholder="Min Price" className="input input-bordered w-full" />
-              <input type="number" name="price_max" placeholder="Max Price" className="input input-bordered w-full" />
-              <select name="currency" className="input input-bordered w-full">
-                <option>BDT</option>
-                <option>USD</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Description */}
-          <div>
-            <h3 className="font-semibold mb-2">Description</h3>
-            <textarea name="food_description" className="textarea textarea-bordered w-full" placeholder="Describe the food..." />
-          </div>
-
-          {/* Review */}
-          <div>
-            <h3 className="font-semibold mb-2">Your Review</h3>
-
-            {/* ⭐ Star Rating */}
-            <div className="flex gap-2 mb-3">
-              {[1,2,3,4,5].map((star) => (
+            <p className="mb-2 font-medium">Your Rating</p>
+            <div className="flex gap-2 text-3xl">
+              {[1, 2, 3, 4, 5].map((star) => (
                 <span
                   key={star}
                   onClick={() => setRating(star)}
-                  className={`cursor-pointer text-2xl ${
+                  className={`cursor-pointer transition ${
                     star <= rating ? "text-yellow-400" : "text-gray-300"
                   }`}
                 >
@@ -100,12 +97,21 @@ const AddReview = () => {
                 </span>
               ))}
             </div>
-
-            <textarea name="review" className="textarea textarea-bordered w-full" placeholder="Write your experience..." />
           </div>
 
-          {/* Submit */}
-          <button className="btn btn-primary w-full">
+          {/* Review */}
+          <textarea
+            name="review"
+            placeholder="Write your experience..."
+            required
+            className="w-full p-3 border rounded-xl h-28 resize-none focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          />
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full py-3 rounded-md font-semibold text-black bg-[#FFC107] hover:bg-yellow-500 transition duration-300 shadow-md"
+          >
             Submit Review
           </button>
 
@@ -115,4 +121,4 @@ const AddReview = () => {
   );
 };
 
-export default AddReview; 
+export default AddReview;
