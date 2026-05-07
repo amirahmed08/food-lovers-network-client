@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import bgImage from "../assets/loginBg.png";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const AddReview = () => {
   const [rating, setRating] = useState(0);
+  const { user } = use(AuthContext)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ const AddReview = () => {
       location: form.location.value,
       review: form.review.value,
       rating,
+      user_email: user?.email,
       created_at: new Date().toISOString(),
     };
 

@@ -6,16 +6,19 @@ const MyReviews = () => {
 
   const [reviews, setReviews] = useState([])
   const { user } = use(AuthContext)
+  console.log(user?.email)
 
   // Load Reviews
   useEffect(() => {
-    fetch('http://localhost:3000/reviews')
+    if(user?.email){
+      fetch(`http://localhost:3000/reviews?email=${user.email}`)
       .then(res => res.json())
       .then(data => {
         console.log(data)
         setReviews(data)
       })
-  }, [])
+    }
+  }, [user?.email])
 
   // Delete Review
   const handleDeleteReview = (_id) => {
@@ -58,11 +61,11 @@ const MyReviews = () => {
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto my-10 px-4">
+    <div className="min-h-screen w-full max-w-7xl mx-auto pt-25 pb-10 px-4">
 
       <h1 className='font-bold text-4xl text-center mb-8'>
         My Reviews :
-        <span className="text-primary ml-2">
+        <span className="text-[#FFC107] ml-2">
           {reviews.length}
         </span>
       </h1>
@@ -147,7 +150,7 @@ const MyReviews = () => {
                   <td>
                     <button
                       onClick={() => handleDeleteReview(review._id)}
-                      className="btn btn-outline btn-error btn-sm"
+                      className="border border-[#FFC107] px-5 py-2 rounded-lg text-sm font-medium text-[#FFC107] hover:bg-[#FFC107] hover:text-white transition duration-300"
                     >
                       Delete
                     </button>
