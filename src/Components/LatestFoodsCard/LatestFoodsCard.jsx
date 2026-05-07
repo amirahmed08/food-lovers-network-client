@@ -4,7 +4,7 @@ import { NavLink } from 'react-router'
 const LatestFoodsCard = ({ review }) => {
   const { _id } = review;
     return (
-        <div className="card w-96 bg-base-100 shadow-lg hover:shadow-xl transition duration-300">
+        <div className="card w-auto md:w-90 lg:w-96  bg-base-100 shadow-lg hover:shadow-xl transition duration-300">
   {/* Image */}
   <figure className="relative">
     <img
@@ -13,7 +13,7 @@ const LatestFoodsCard = ({ review }) => {
       className="h-52 w-full object-cover"
     />
     <span className="absolute top-2 right-2 badge badge-secondary">
-      Local
+      {review.food_category}
     </span>
   </figure>
 
@@ -55,7 +55,7 @@ const LatestFoodsCard = ({ review }) => {
 
     {/* Action */}
     <div className="card-actions justify-end mt-2">
-      <NavLink to={`/foods/${_id}`} className="btn btn-sm btn-outline btn-primary">
+      <NavLink to={`/foods/${_id}`} className="border border-[#FFC107] px-5 py-2 rounded-lg text-sm font-medium text-[#FFC107] hover:bg-[#FFC107] hover:text-white transition duration-300">
         View Details
       </NavLink>
     </div>

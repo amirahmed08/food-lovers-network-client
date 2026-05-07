@@ -139,6 +139,18 @@
 }
 
 
+/* navbar .active css design */
+.navbar-container .active{
+    color: #ffc619;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.navbar-small-device .active{
+    background-color: rgb(231, 224, 224);
+    color:rgb(255, 197, 8);
+}
+
 
 /* font-weight: 400;
   font-style: normal; */

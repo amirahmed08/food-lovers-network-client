@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import bgImage from "../assets/loginBg.png";
 
 const AddReview = () => {
   const [rating, setRating] = useState(0);
@@ -24,45 +25,53 @@ const AddReview = () => {
       },
       body: JSON.stringify(data),
     })
-      .then(res => res.json()) 
-      .then(result => { console.log('Saved to DB:', result);
-         if (result.insertedId) 
-          { 
-            alert('Review added successfully!'); 
-          }
-        })
-         .catch(error =>
-           { 
-          console.error('Error:', error);
-          });
+      .then(res => res.json())
+      .then(result => {
+        console.log('Saved to DB:', result);
+        if (result.insertedId) {
+          alert('Review added successfully!');
+          form.reset();
+          setRating(0);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-orange-100 flex items-center justify-center px-4 pb-10 pt-25">
-      <div className="w-full max-w-2xl bg-white rounded-3xl shadow-xl p-8">
-        
-        <h2 className="text-3xl font-bold text-center mb-6">
-          🍽️ Share Your Food Experience
+    <div
+      className="min-h-screen w-full bg-cover bg-center flex items-center justify-center relative py-10 px-4 overflow-hidden"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/30"></div>
+      <div className="pt-20 pb-10">
+        <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-xl p-8">
+
+        <h2 className="text-3xl font-bold text-center mb-6 cormorant-infant">
+           Share Your Food Experience
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
 
           {/* Food Name */}
 
-          
-            <input
+
+          <input
             name="food_name"
             placeholder="Food Name"
             required
             className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-yellow-400 transition"
           />
-          
+
 
           {/* Image URL */}
           <input
             name="image_url"
             placeholder="Food Image URL"
-           className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-yellow-400 transition"
+            className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-yellow-400 transition"
           />
 
           {/* Restaurant */}
@@ -89,9 +98,8 @@ const AddReview = () => {
                 <span
                   key={star}
                   onClick={() => setRating(star)}
-                  className={`cursor-pointer transition ${
-                    star <= rating ? "text-yellow-400" : "text-gray-300"
-                  }`}
+                  className={`cursor-pointer transition ${star <= rating ? "text-yellow-400" : "text-gray-300"
+                    }`}
                 >
                   ★
                 </span>
@@ -116,6 +124,7 @@ const AddReview = () => {
           </button>
 
         </form>
+      </div>
       </div>
     </div>
   );

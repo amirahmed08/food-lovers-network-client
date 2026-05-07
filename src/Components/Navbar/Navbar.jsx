@@ -82,7 +82,7 @@ import { BiLogOut } from "react-icons/bi";
               <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                 ☰
               </div>
-              <ul className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              <ul className="navbar-small-device menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                 {links}
               </ul>
             </div>
@@ -100,7 +100,7 @@ import { BiLogOut } from "react-icons/bi";
 
           {/* CENTER */}
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 text-xl gap-5 cormorant-infant">
+            <ul className="menu menu-horizontal px-1 text-xl gap-5 cormorant-infant navbar-container">
               {links}
             </ul>
           </div>
