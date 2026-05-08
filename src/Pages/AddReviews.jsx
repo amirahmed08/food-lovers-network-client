@@ -32,13 +32,14 @@ const AddReview = () => {
       .then(result => {
         console.log('Saved to DB:', result);
         if (result.insertedId) {
-          alert('Review added successfully!');
+          toast.success('Review added successfully!');
           form.reset();
           setRating(0);
         }
       })
       .catch(error => {
         console.error('Error:', error);
+        toast.error('Failed to add review.');
       });
   };
 
