@@ -49,7 +49,7 @@
 
 
 /* in the register page top animated button */
-/* From Uiverse.io by gharsh11032000 */ 
+/* From Uiverse.io by gharsh11032000 */
 .animated-button {
   position: relative;
   display: flex;
@@ -63,7 +63,7 @@
   border-radius: 10px;
   font-weight: 600;
   color: #FFC107;
-   
+
   cursor: pointer;
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
@@ -140,15 +140,15 @@
 
 
 /* navbar .active css design */
-.navbar-container .active{
-    color: #ffc619;
+.navbar-container .active {
+  color: #ffc619;
   font-weight: bold;
   font-size: 20px;
 }
 
-.navbar-small-device .active{
-    background-color: rgb(231, 224, 224);
-    color:rgb(255, 197, 8);
+.navbar-small-device .active {
+  background-color: rgb(231, 224, 224);
+  color: rgb(255, 197, 8);
 }
 
 

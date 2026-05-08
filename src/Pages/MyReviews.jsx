@@ -6,7 +6,7 @@ const MyReviews = () => {
 
   const [reviews, setReviews] = useState([])
   const { user } = use(AuthContext)
-  console.log(user?.email)
+  // console.log(user?.email)
 
   // Load Reviews
   useEffect(() => {

@@ -4,7 +4,7 @@ import { NavLink, useLoaderData } from "react-router";
 const CardDetailPage = () => {
   
   const review = useLoaderData();
-  console.log(review); 
+  // console.log(review); 
 
   return (
     <div>

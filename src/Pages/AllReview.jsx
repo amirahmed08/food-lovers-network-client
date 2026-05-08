@@ -4,7 +4,7 @@ import AllFoodCard from '../Components/AllFoodCard/AllFoodCard';
 
 const AllReview = () => {
   const data = useLoaderData();
-  console.log(data);
+//   console.log(data);
   return (
     <div className="container max-w-7xl mx-auto py-15">
             <h1 className='text-5xl text-center font-bold my-6 pt-5 cormorant-infant'>Popular Food Review</h1>
