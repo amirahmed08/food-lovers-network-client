@@ -9,6 +9,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/register";
 import Error from "../Pages/Error";
 import CardDetailPage from "../Pages/CardDetailPage";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 const router = createBrowserRouter(
     [
@@ -29,11 +30,17 @@ const router = createBrowserRouter(
                 },
                 {
                     path: "/my-reviews",
-                    Component: MyReviews,
+                    element:
+                    <PrivateRoute>
+                        <MyReviews></MyReviews>
+                    </PrivateRoute>,
                 },
                 {
                     path: "/add-reviews",
-                    Component: AddReviews,
+                    element:
+                    <PrivateRoute>
+                        <AddReviews></AddReviews>
+                    </PrivateRoute>,
                 },
                 {
                     path: "/foods/:id",

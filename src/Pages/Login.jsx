@@ -1,14 +1,15 @@
 import React, { useContext, useState } from 'react'
 import loginBg from '../assets/loginBg.png'
 import { AuthContext } from '../Provider/AuthProvider'
-import { NavLink } from 'react-router'
+import { NavLink, useLocation, useNavigate } from 'react-router'
 import { FaRegEye } from "react-icons/fa";
 import { IoIosEyeOff } from "react-icons/io";
 
 const Login = () => {
   const {signIn, setUser, signInWithGoogle} = useContext(AuthContext)
-
   const [hide, setHide] = useState(true)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   const handleLogin = (e) => {
     e.preventDefault()
@@ -18,6 +19,8 @@ const Login = () => {
     .then(result =>{
       const user = result.user
       alert('You logged in successfully!!')
+      setUser(user)
+     navigate(location.state? location.state: '/')
     })
     .catch((error) => {
     const errorCode = error.code;
@@ -33,6 +36,7 @@ const Login = () => {
       const user = result.user
       setUser(user)
       alert('You logged in successfully!!')
+      navigate(location.state? location.state: '/')
     })
      .catch(error => {
       console.error(error)
