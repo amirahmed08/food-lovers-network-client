@@ -76,11 +76,11 @@ const Register = () => {
         console.log('data after user save', data)
       })
       setUser(user)
-      alert('You logged in successfully!!')
+      toast.success('You logged in successfully!!')
     })
      .catch(error => {
       console.error(error)
-      alert(error.message)
+      toast.error(error.message)
     })
   }
 
