@@ -10,18 +10,21 @@ import Register from "../Pages/register";
 import Error from "../Pages/Error";
 import CardDetailPage from "../Pages/CardDetailPage";
 import PrivateRoute from "../Provider/PrivateRoute";
+import Loading from "../Pages/Loading";
+
 
 const router = createBrowserRouter(
     [
         {
             path: "/",
             Component: Root,
+            HydrateFallback: Loading,
             children: [
                 {
                     index: true,
                     path: "/",
                     loader: () => fetch(`http://localhost:3000/latest-foods`),
-                    Component: Home
+                    Component: Home,
                 },
                 {
                     path: "/all-review",
@@ -45,7 +48,7 @@ const router = createBrowserRouter(
                 {
                     path: "/foods/:id",
                     loader: ({ params }) => fetch(`http://localhost:3000/foods/${params.id}`),
-                    Component: CardDetailPage,
+                    element: <PrivateRoute><CardDetailPage /></PrivateRoute>,
                 }
             ]
         },
@@ -53,6 +56,7 @@ const router = createBrowserRouter(
         {
             path: "/auth",
             Component: Authentication,
+            HydrateFallback: Loading,
             children: [
                 {
                     path: "/auth/login",
