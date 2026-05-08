@@ -18,14 +18,14 @@ const Login = () => {
     signIn(email, password)
     .then(result =>{
       const user = result.user
-      alert('You logged in successfully!!')
+      toast.success('You logged in successfully!!')
       setUser(user)
      navigate(location.state? location.state: '/')
     })
     .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    alert('User not found!! Please register first')
+    toast.error('User not found!! Please register first')
   });
 
   }
@@ -35,12 +35,12 @@ const Login = () => {
     .then(result => {
       const user = result.user
       setUser(user)
-      alert('You logged in successfully!!')
+      toast.success('You logged in successfully!!')
       navigate(location.state? location.state: '/')
     })
      .catch(error => {
       console.error(error)
-      alert(error.message)
+      toast.error(error.message)
     })
   }
 
