@@ -63,7 +63,7 @@ const MyReviews = () => {
   return (
     <div className="min-h-screen w-full max-w-7xl mx-auto pt-25 pb-10 px-4">
 
-      <h1 className='font-bold text-4xl text-center mb-8'>
+      <h1 className='font-bold text-5xl text-center mb-8 cormorant-infant'>
         My Reviews :
         <span className="text-[#FFC107] ml-2">
           {reviews.length}

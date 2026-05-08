@@ -19,7 +19,7 @@ const AllFoodCard = ({ data }) => {
 
   {/* Content */}
   <div className="card-body p-4">
-    {/* Title */}
+    
     <h2 className="card-title text-lg font-bold">
       {data.food_name}
     </h2>

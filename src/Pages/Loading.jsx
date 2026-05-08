@@ -3,7 +3,7 @@ import { UtensilsCrossed } from "lucide-react";
 
 const Loading = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#FFC107] overflow-hidden">
+    <div className="w-full min-h-screen flex items-center justify-center bg-[#FFC107] overflow-hidden">
       
       <div className="text-center">
 
