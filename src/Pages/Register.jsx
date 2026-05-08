@@ -4,6 +4,7 @@ import { AuthContext } from '../Provider/AuthProvider'
 import { NavLink } from 'react-router'
 import { FaRegEye } from "react-icons/fa";
 import { IoIosEyeOff } from "react-icons/io";
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const [hide, setHide] = useState(true)

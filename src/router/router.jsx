@@ -6,7 +6,7 @@ import MyReviews from "../Pages/MyReviews";
 import AddReviews from "../Pages/AddReviews";
 import Authentication from "../Components/Authentication/Authentication";
 import Login from "../Pages/Login";
-import Register from "../Pages/register";
+import Register from "../Pages/Register";
 import Error from "../Pages/Error";
 import CardDetailPage from "../Pages/CardDetailPage";
 import PrivateRoute from "../Provider/PrivateRoute";

@@ -4,6 +4,7 @@ import { MdOutlineLogin } from "react-icons/md";
 import { use } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { BiLogOut } from "react-icons/bi";
+import { toast } from 'react-toastify';
 
 
   const Navbar = () => {
@@ -19,11 +20,11 @@ import { BiLogOut } from "react-icons/bi";
     logOut()
       .then(() => {
         // Sign-out successful.
-        alert('Logout successful')
+        toast.success('Logout successful')
       })
       .catch((error) => {
         // An error happened.
-        alert('Error signing out: ' + error.message);
+        toast.error('Error signing out: ' + error.message);
        })
   }
 
