@@ -41,12 +41,12 @@ const Register = () => {
       })
 
         setUser(user)
-        alert('You registered successfully!!')
+        toast.success('You registered successfully!!')
       })
       .catch((error) => {
         const errorCode = error.code;
     const errorMessage = error.message;
-    alert(errorMessage)
+    toast.error(errorMessage)
     // ..
       });
   }
