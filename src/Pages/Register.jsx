@@ -1,5 +1,5 @@
 import React, { use, useState } from 'react'
-import loginBg from '../assets/loginBg.png'
+import loginBg from '../assets/LoginBg.png'
 import { AuthContext } from '../Provider/AuthProvider'
 import { NavLink } from 'react-router'
 import { FaRegEye } from "react-icons/fa";

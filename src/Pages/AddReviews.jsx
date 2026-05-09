@@ -1,5 +1,5 @@
 import React, { use, useState } from "react";
-import bgImage from "../assets/loginBg.png";
+import bgImage from "../assets/LoginBg.png";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 
