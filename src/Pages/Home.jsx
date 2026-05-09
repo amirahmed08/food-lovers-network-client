@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../Components/Header/header'
+import Header from '../Components/Header/Header'
 import LatestFoods from '../Components/LatestFoods/LatestFoods'
 import { useLoaderData } from 'react-router'
 
