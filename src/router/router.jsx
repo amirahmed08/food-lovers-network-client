@@ -23,12 +23,12 @@ const router = createBrowserRouter(
                 {
                     index: true,
                     path: "/",
-                    loader: () => fetch(`http://localhost:3000/latest-foods`),
+                    loader: () => fetch(`https://food-lover-server-seven.vercel.app/latest-foods`),
                     Component: Home,
                 },
                 {
                     path: "/all-review",
-                    loader: () => fetch(`http://localhost:3000/foods`),
+                    loader: () => fetch(`https://food-lover-server-seven.vercel.app/foods`),
                     Component: AllReview,
                 },
                 {
@@ -47,7 +47,7 @@ const router = createBrowserRouter(
                 },
                 {
                     path: "/foods/:id",
-                    loader: ({ params }) => fetch(`http://localhost:3000/foods/${params.id}`),
+                    loader: ({ params }) => fetch(`http://localhost:3000 /foods/${params.id}`),
                     element: <PrivateRoute><CardDetailPage /></PrivateRoute>,
                 }
             ]

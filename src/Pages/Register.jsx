@@ -29,7 +29,7 @@ const Register = () => {
       }
 
       //create user in the database
-      fetch('http://localhost:3000/users', {
+      fetch('https://food-lover-server-seven.vercel.app/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ const Register = () => {
       }
 
       //create user in the database
-      fetch('http://localhost:3000/users', {
+      fetch('https://food-lover-server-seven.vercel.app/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

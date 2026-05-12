@@ -11,7 +11,7 @@ const MyReviews = () => {
   // Load Reviews
   useEffect(() => {
     if(user?.email){
-      fetch(`http://localhost:3000/reviews?email=${user.email}`)
+      fetch(`https://food-lover-server-seven.vercel.app/reviews?email=${user.email}`)
       .then(res => res.json())
       .then(data => {
         console.log(data)
@@ -35,7 +35,7 @@ const MyReviews = () => {
 
       if (result.isConfirmed) {
 
-        fetch(`http://localhost:3000/reviews/${_id}`, {
+        fetch(`https://food-lover-server-seven.vercel.app/reviews/${_id}`, {
           method: 'DELETE',
         })
           .then(res => res.json())
